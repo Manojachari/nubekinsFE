@@ -22,8 +22,8 @@ function Certifications() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-            Our Certifications
+        <h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600">
+        Our Certifications
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Choose from our comprehensive range of industry-recognized certifications

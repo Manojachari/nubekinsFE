@@ -30,8 +30,8 @@ function About() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-            About Nubekins
+        <h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600">
+        About Nubekins
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Empowering professionals worldwide with industry-recognized certifications

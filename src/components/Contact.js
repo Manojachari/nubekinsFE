@@ -40,8 +40,8 @@ function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-            Contact Us
+        <h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600">
+        Contact Us
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Have questions? We're here to help. Reach out to us and we'll get back to you as soon as possible.

@@ -35,9 +35,7 @@ function AdminPanel() {
     formData.append('image', newCert.image);
     formData.append('details', JSON.stringify(newCert.details));
 
-    for (let pair of formData.entries()) {
-      console.log(`${pair[0]}: ${pair[1]}`);
-    }
+
 
     axios.post(`${process.env.REACT_APP_API_URL}/certifications`, formData)
       .then(response => {
@@ -65,9 +63,7 @@ function AdminPanel() {
     if (newCert.image) formData.append('image', newCert.image);
     formData.append('details', JSON.stringify(newCert.details));
 
-    for (let pair of formData.entries()) {
-      console.log(`${pair[0]}: ${pair[1]}`);
-    }
+
 
     axios.put(`${process.env.REACT_APP_API_URL}/certifications/${editCert._id}`, formData)
       .then(response => {
@@ -106,9 +102,7 @@ function AdminPanel() {
     const formData = new FormData();
     formData.append('image', newGalleryImage);
 
-    for (let pair of formData.entries()) {
-      console.log(`${pair[0]}: ${pair[1]}`);
-    }
+
 
     axios.post(`${process.env.REACT_APP_API_URL}/gallery`, formData)
       .then(response => {

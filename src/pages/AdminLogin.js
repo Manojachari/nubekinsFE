@@ -13,9 +13,7 @@ function AdminLogin() {
       password === `${process.env.REACT_APP_ADMIN_PASSWORD}`
     ) {
       navigate('/admin-panel');
-    } else {
-      console.log( username ,process.env.REACT_APP_ADMIN_USERNAME ,
-        password ,process.env.REACT_APP_ADMIN_PASSWORD)      
+    } else {     
       alert('Invalid credentials');
     }
   };
