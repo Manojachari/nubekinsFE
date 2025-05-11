@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import certificationBanner from '../assets/certification-banner.jpg';
+import whatsappicon from '../assets/whatsapp_icon.png';
+import './Home.css'; // Import the CSS file for styling
 
 function CertificationPage() {
   const { id } = useParams();
@@ -91,6 +93,7 @@ function CertificationPage() {
               transition={{ duration: 0.5 }}
               className="lg:w-2/3"
             >
+         
               <AnimatePresence mode="wait">
                 {selectedCert && (
                   <motion.div
@@ -148,6 +151,9 @@ function CertificationPage() {
           </div>
         </div>
       </motion.section>
+            <a class="whats-app" href="https://wa.me/+917995847197" target="_blank" rel="noopener noreferrer">
+              <img src={whatsappicon} alt="WhatsApp" height={100} />
+            </a>
       <Footer />
     </div>
   );
