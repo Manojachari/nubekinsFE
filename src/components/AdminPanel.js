@@ -1,25 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
-function AdminPanel() {
-   const navigate = useNavigate();
-  const [tab, setTab] = useState('contacts');
-//   const [certifications, setCertifications] = useState([]);
+function CertificateAdminPanel() {
+//   const navigate = useNavigate();
+  const [tab, setTab] = useState('certifications');
+  const [certifications, setCertifications] = useState([]);
   const [contacts, setContacts] = useState([]);
-//   const [newCert, setNewCert] = useState({ title: '', image: null, details: [''] });
-//   const [editCert, setEditCert] = useState(null);
-//   const fileInputRef = useRef(null);
+  const [newCert, setNewCert] = useState({ title: '', image: null, details: [''] });
+  const [editCert, setEditCert] = useState(null);
+  const fileInputRef = useRef(null);
   const [newGalleryImage, setNewGalleryImage] = useState(null); // New state for gallery image
   const [galleryImages, setGalleryImages] = useState([]); // New state for gallery
   const galleryFileInputRef = useRef(null); // New ref for gallery file input
 
 
   useEffect(() => {
-    // axios.get(`${process.env.REACT_APP_API_URL}/certifications`)
-    //   .then(response => setCertifications(response.data))
-    //   .catch(error => console.error(error));
+    axios.get(`${process.env.REACT_APP_API_URL}/certifications`)
+      .then(response => setCertifications(response.data))
+      .catch(error => console.error(error));
     axios.get(`${process.env.REACT_APP_API_URL}/contact`)
       .then(response => setContacts(response.data))
       .catch(error => console.error(error));
@@ -28,60 +28,60 @@ function AdminPanel() {
       .catch(error => console.error('Error fetching gallery images:', error));
   }, []);
 
-//   const handleCertSubmit = (e) => {
-//     e.preventDefault();
-//     const formData = new FormData();
-//     formData.append('title', newCert.title);
-//     formData.append('image', newCert.image);
-//     formData.append('details', JSON.stringify(newCert.details));
+  const handleCertSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('title', newCert.title);
+    formData.append('image', newCert.image);
+    formData.append('details', JSON.stringify(newCert.details));
 
 
 
-//     axios.post(`${process.env.REACT_APP_API_URL}/certifications`, formData)
-//       .then(response => {
-//         setCertifications([...certifications, response.data]);
-//         setNewCert({ title: '', image: null, details: [''] });
-//         if (fileInputRef.current) {
-//           fileInputRef.current.value = '';
-//         }
-//       })
-//       .catch(error => console.error('Error uploading certificate:', error));
-//   };
+    axios.post(`${process.env.REACT_APP_API_URL}/certifications`, formData)
+      .then(response => {
+        setCertifications([...certifications, response.data]);
+        setNewCert({ title: '', image: null, details: [''] });
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      })
+      .catch(error => console.error('Error uploading certificate:', error));
+  };
 
-//   const handleEditCert = (cert) => {
-//     setEditCert(cert);
-//     setNewCert({ title: cert.title, image: null, details: cert.details });
-//     if (fileInputRef.current) {
-//       fileInputRef.current.value = '';
-//     }
-//   };
+  const handleEditCert = (cert) => {
+    setEditCert(cert);
+    setNewCert({ title: cert.title, image: null, details: cert.details });
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
-//   const handleUpdateCert = (e) => {
-//     e.preventDefault();
-//     const formData = new FormData();
-//     formData.append('title', newCert.title);
-//     if (newCert.image) formData.append('image', newCert.image);
-//     formData.append('details', JSON.stringify(newCert.details));
+  const handleUpdateCert = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('title', newCert.title);
+    if (newCert.image) formData.append('image', newCert.image);
+    formData.append('details', JSON.stringify(newCert.details));
 
 
 
-//     axios.put(`${process.env.REACT_APP_API_URL}/certifications/${editCert._id}`, formData)
-//       .then(response => {
-//         setCertifications(certifications.map(c => c._id === editCert._id ? response.data : c));
-//         setEditCert(null);
-//         setNewCert({ title: '', image: null, details: [''] });
-//         if (fileInputRef.current) {
-//           fileInputRef.current.value = '';
-//         }
-//       })
-//       .catch(error => console.error('Error updating certificate:', error));
-//   };
+    axios.put(`${process.env.REACT_APP_API_URL}/certifications/${editCert._id}`, formData)
+      .then(response => {
+        setCertifications(certifications.map(c => c._id === editCert._id ? response.data : c));
+        setEditCert(null);
+        setNewCert({ title: '', image: null, details: [''] });
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      })
+      .catch(error => console.error('Error updating certificate:', error));
+  };
 
-//   const handleDeleteCert = (id) => {
-//     axios.delete(`${process.env.REACT_APP_API_URL}/certifications/${id}`)
-//       .then(() => setCertifications(certifications.filter(c => c._id !== id)))
-//       .catch(error => console.error(error));
-//   };
+  const handleDeleteCert = (id) => {
+    axios.delete(`${process.env.REACT_APP_API_URL}/certifications/${id}`)
+      .then(() => setCertifications(certifications.filter(c => c._id !== id)))
+      .catch(error => console.error(error));
+  };
 
   const handleDeleteContact = (id) => {
     axios.delete(`${process.env.REACT_APP_API_URL}/contact/${id}`)
@@ -121,11 +121,11 @@ function AdminPanel() {
       .catch(error => console.error('Error deleting gallery image:', error));
   };
 
-  const handleLogout = () => {
-    // Clear any admin session data if needed
-    localStorage.removeItem('adminToken');
-    navigate('/admin-board');
-  };
+//   const handleLogout = () => {
+//     // Clear any admin session data if needed
+//     localStorage.removeItem('adminToken');
+//     navigate('/admin-board');
+//   };
 
   return (
     <motion.div
@@ -143,18 +143,18 @@ function AdminPanel() {
           >
             Admin Panel
           </motion.h2>
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleLogout}
             className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-300"
           >
             Logout
-          </motion.button>
+          </motion.button> */}
         </div>
 
         <div className="flex space-x-4 mb-8">
-          {/* <motion.button
+          <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setTab('certifications')}
@@ -165,7 +165,7 @@ function AdminPanel() {
             }`}
           >
             Certifications
-          </motion.button> */}
+          </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -193,7 +193,7 @@ function AdminPanel() {
         </div>
 
         <AnimatePresence mode="wait">
-          {/* {tab === 'certifications' && (
+          {tab === 'certifications' && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -296,7 +296,7 @@ function AdminPanel() {
                 </div>
               </div>
             </motion.div>
-          )} */}
+          )}
 
           {tab === 'contacts' && (
             <motion.div
@@ -401,4 +401,4 @@ function AdminPanel() {
   );
 }
 
-export default AdminPanel;
+export default CertificateAdminPanel;
