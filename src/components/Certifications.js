@@ -48,7 +48,7 @@ function Certifications() {
                   
                   {/* Image */}
                   <img
-                    src={`${process.env.REACT_APP_API_URL_IMG}${cert.image}`}
+                    src={cert.image}
                     alt={cert.title}
                     className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
                   />

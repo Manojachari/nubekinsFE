@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Certifications from '../components/Certifications';
 import Contact from '../components/Contact';
+import Courses from '../components/Courses';
 import Footer from '../components/Footer';
 import Gallery from '../components/Gallery';
 import whatsappicon from '../assets/whatsapp_icon.png';
@@ -16,6 +17,7 @@ function Home() {
       <Hero />
       <About />
       <Certifications />
+      <Courses />
       <Contact />
       <Gallery /> 
     <a class="whats-app" href="https://wa.me/+917995847197" target="_blank" rel="noopener noreferrer">
