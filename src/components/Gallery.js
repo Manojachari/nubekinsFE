@@ -34,7 +34,7 @@ function Gallery() {
               className="relative overflow-hidden rounded-2xl shadow-lg glass group"
             >
               <img
-                src={`${process.env.REACT_APP_API_URL_IMG}${image.image}`}
+                src={image.image}
                 alt="Gallery"
                 className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-2xl"
               />

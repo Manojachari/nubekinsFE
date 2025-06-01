@@ -13,6 +13,7 @@ function Header() {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/#about' },
     { name: 'Certifications', path: '/#certifications' },
+    { name: 'Courses', path: '/#courses' },
     { name: 'Contact', path: '/#contact' }
   ];
 
